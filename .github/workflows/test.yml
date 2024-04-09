@@ -12,7 +12,7 @@ jobs:
   deploy-feature:
     runs-on: ubuntu-latest
     environment:
-      name: $(echo ${{ inputs.tags }} | cut -d'-' -f 1)
+      name: ${{ inputs.tags }}
       url: https://github.com
 
     steps:
