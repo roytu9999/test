@@ -12,7 +12,7 @@ jobs:
   deploy-feature:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ inputs.tags }}
+      name: $(echo ${{ inputs.tags }} | cut -d'-' -f 1)
       url: https://github.com
 
     steps:
@@ -22,5 +22,6 @@ jobs:
       - id: "setup-envs"
         name: Setup envs
         run: |
+          echo ${{ inputs.tags }}
           echo "secre=${{ secrets.JJ }}"
           echo "env=${{ vars.HAHA }}"
